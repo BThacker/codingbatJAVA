@@ -438,7 +438,6 @@ public String wordEnds(String str, String word) {
 		else {
 			continue;
 		}
-
 	}
 	return retString;
 }
