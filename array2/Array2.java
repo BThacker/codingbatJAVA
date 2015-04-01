@@ -771,7 +771,6 @@ public int[] zeroMax(int[] nums) {
 	int replaceIndex = 0;
 	int replaceNum = 0;
 	boolean foundZero = false;
-	boolean foundOdd = false;
 	boolean canReplace = false;
 	for(int i = 0; i < x; i++) {
 		if (canReplace && foundZero) {
@@ -793,7 +792,6 @@ public int[] zeroMax(int[] nums) {
 			multiLoop++;
 			canReplace = true;
 		}
-		
 	}
 	return nums;
 }
