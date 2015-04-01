@@ -616,3 +616,253 @@ public int[] tenRun(int[] nums) {
  	}
 	return retArray;
 }
+
+/*PRE4
+Given a non-empty array of ints, return a new array containing the elements from the original 
+array that come before the first 4 in the original array. The original array will contain at 
+least one 4. Note that it is valid in java to create an array of length 0.
+
+pre4({1, 2, 4, 1}) → {1, 2}
+pre4({3, 1, 4}) → {3, 1}
+pre4({1, 4, 4}) → {1}
+*/
+// BT - Doing this with one loop was frustrating until I found out about .copyOf
+public int[] pre4(int[] nums) {
+	int indexOfFour = 0;
+	for (int i = 0; i < nums.length; i++) {
+		if (nums[i] == 4) {
+			indexOfFour = i;
+			break;
+		}
+	}
+	int[] retArray = Arrays.copyOf(nums, indexOfFour);
+	return retArray;
+}
+
+/*POST4
+Given a non-empty array of ints, return a new array containing the elements from 
+the original array that come after the last 4 in the original array. The original 
+array will contain at least one 4. Note that it is valid in java to create an array 
+of length 0.
+
+post4({2, 4, 1, 2}) → {1, 2}
+post4({4, 1, 4, 2}) → {2}
+post4({4, 4, 1, 2, 3}) → {1, 2, 3}
+*/
+// BT - This is how the last one should have been done, instead of .copyOf
+public int[] post4(int[] nums) {
+	int indexOfFour = 0;
+	int j = 0;
+	int[] retArray = new int[0]; 
+	for (int i = 0; i < nums.length; i++) {
+		if (nums[i] == 4) {
+			indexOfFour = i;
+			j = 0;
+			retArray = new int[nums.length - 1 - indexOfFour];
+			continue;
+		}
+		if (retArray.length != 0) {
+			retArray[j] = nums[i];
+		}
+		j++;
+	}
+	return retArray;
+}
+
+/*NOTALONE
+We'll say that an element in an array is "alone" if there are values before and after it, 
+and those values are different from it. Return a version of the given array where every 
+instance of the given value which is alone is replaced by whichever value to its left or 
+right is larger.
+
+notAlone({1, 2, 3}, 2) → {1, 3, 3}
+notAlone({1, 2, 3, 2, 5, 2}, 2) → {1, 3, 3, 5, 5, 2}
+notAlone({3, 4}, 3) → {3, 4}
+*/
+
+public int[] notAlone(int[] nums, int val) {
+	int [] retArray = new int[nums.length];
+	for (int i = 0; i < nums.length; i++) {
+		if (i > 0 && i != nums.length -1 && nums[i] == val && nums[i-1] != val && nums[i+1] != val) {
+			retArray[i] = Math.max(nums[i-1], nums[i+1]);
+			continue;
+		}
+		retArray[i] = nums[i];
+	}
+	return retArray;
+}
+
+/*ZEROFRONT
+Return an array that contains the exact same numbers as the given array, but rearranged 
+so that all the zeros are grouped at the start of the array. The order of the non-zero 
+numbers does not matter. So {1, 0, 0, 1} becomes {0 ,0, 1, 1}. You may modify and return 
+the given array or make a new array.
+
+zeroFront({1, 0, 0, 1}) → {0, 0, 1, 1}
+zeroFront({0, 1, 1, 0, 1}) → {0, 0, 1, 1, 1}
+zeroFront({1, 0}) → {0, 1}
+*/
+// BT - This was a really fun problem. I don't know if this is the best solution
+// but configuring and figuring out multiple conditions like this for a single loop
+// mixed with a "bubble" sort = awesome. 
+public int[] zeroFront(int[] nums) {
+	int x = nums.length;
+	int multiLoop = 0;
+	int temp;
+	for(int i = 0; i < x; i++) {
+		if (i < nums.length - 1 && nums[i] != 0 && nums[i+1] == 0) {
+			temp = nums[i + 1];
+			nums[i + 1] = nums[i];
+			nums[i] = temp;
+		}
+		if (i == nums.length - 1 && multiLoop < nums.length) {
+			i = -1;
+			multiLoop++;
+		}
+	}
+	return nums;
+}
+
+/*WITHOUTTEN
+Return a version of the given array where all the 10's have been removed. The remaining 
+elements should shift left towards the start of the array as needed, and the empty spaces 
+a the end of the array should be 0. So {1, 10, 10, 2} yields {1, 2, 0, 0}. You may modify 
+and return the given array or make a new array.
+
+withoutTen({1, 10, 10, 2}) → {1, 2, 0, 0}
+withoutTen({10, 2, 10}) → {2, 0, 0}
+withoutTen({1, 99, 10}) → {1, 99, 0}
+*/
+// BT - Modified my code from the above problem
+public int[] withoutTen(int[] nums) {
+	int x = nums.length;
+	int multiLoop = 0;
+	int temp;
+	for(int i = 0; i < x; i++) {
+		if (nums[i] == 10) {
+			nums[i] = 0;
+		}
+		if (i < nums.length - 1 && nums[i] == 0 && nums[i+1] != 0) {
+			temp = nums[i];
+			nums[i] = nums[i + 1];
+			nums[i + 1] = temp;
+		}
+		if (i == nums.length - 1 && multiLoop < nums.length) {
+			i = -1;
+			multiLoop++;
+		}
+	}
+	return nums;
+}
+
+/*ZEROMAX
+Return a version of the given array where each zero value in the array is replaced by the 
+largest odd value to the right of the zero in the array. If there is no odd value to the 
+right of the zero, leave the zero as a zero.
+
+zeroMax({0, 5, 0, 3}) → {5, 5, 3, 3}
+zeroMax({0, 4, 0, 3}) → {3, 4, 3, 3}
+zeroMax({0, 1, 0}) → {1, 1, 0}
+*/
+// BT - This one took a ridiculous amount of time. 
+public int[] zeroMax(int[] nums) {
+	int x = nums.length;
+	int multiLoop = 0;
+	int replaceIndex = 0;
+	int replaceNum = 0;
+	boolean foundZero = false;
+	boolean foundOdd = false;
+	boolean canReplace = false;
+	for(int i = 0; i < x; i++) {
+		if (canReplace && foundZero) {
+			nums[replaceIndex] = replaceNum;
+			canReplace = false;
+			foundZero = false;
+			replaceNum = 0;
+			continue;
+		}
+		if (!foundZero && nums[i] == 0){
+			replaceIndex = i;
+			foundZero = true;
+		}
+		if (foundZero && nums[i] % 2 != 0 && nums[i] != 0 && replaceNum < nums[i]) {
+			replaceNum = nums[i];
+		}
+		if (i == nums.length - 1 && multiLoop < 5) {
+			i = -1;
+			multiLoop++;
+			canReplace = true;
+		}
+		
+	}
+	return nums;
+}
+
+/*EVENODD
+Return an array that contains the exact same numbers as the given array, but rearranged so 
+that all the even numbers come before all the odd numbers. Other than that, the numbers can 
+be in any order. You may modify and return the given array, or make a new array.
+
+evenOdd({1, 0, 1, 0, 0, 1, 1}) → {0, 0, 0, 1, 1, 1, 1}
+evenOdd({3, 3, 2}) → {2, 3, 3}
+evenOdd({2, 2, 2}) → {2, 2, 2}
+*/
+
+public int[] evenOdd(int[] nums) {
+	int x = nums.length;
+	int multiLoop = 0;
+	int temp;
+	for(int i = 0; i < x; i++) {
+		if (i < nums.length - 1 && nums[i] % 2 != 0  && nums[i+1] % 2 == 0) {
+			temp = nums[i + 1];
+			nums[i + 1] = nums[i];
+			nums[i] = temp;
+		}
+		if (i == nums.length - 1 && multiLoop < nums.length) {
+			i = -1;
+			multiLoop++;
+		}
+	}
+	return nums;
+}
+
+/*FIZZBUZZ
+This is slightly more difficult version of the famous FizzBuzz problem which is sometimes 
+given as a first problem for job interviews. (See also: FizzBuzz Code.) Consider the series 
+of numbers beginning at start and running up to but not including end, so for example start=1 
+and end=5 gives the series 1, 2, 3, 4. Return a new String[] array containing the string 
+form of these numbers, except for multiples of 3, use "Fizz" instead of the number, for 
+multiples of 5 use "Buzz", and for multiples of both 3 and 5 use "FizzBuzz". In Java, 
+String.valueOf(xxx) will make the String form of an int or other type. This version is a 
+little more complicated than the usual version since you have to allocate and index into 
+an array instead of just printing, and we vary the start/end instead of just always 
+doing 1..100.
+
+fizzBuzz(1, 6) → {"1", "2", "Fizz", "4", "Buzz"}
+fizzBuzz(1, 8) → {"1", "2", "Fizz", "4", "Buzz", "Fizz", "7"}
+fizzBuzz(1, 11) → {"1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz"}
+*/
+// BT - This one was quick, but very fun. 
+public String[] fizzBuzz(int start, int end) {
+	int arLen = end - start;
+	String[] results = new String[arLen]; 
+	int ind = 0;
+	int startInt = start;
+	for (int i = start; i < end; i++) {
+		if (i % 3 == 0 && i % 5 == 0) {
+			results[ind] = "FizzBuzz";
+		}
+		else if (i % 5 == 0) {
+			results[ind] = "Buzz";
+		}
+		else if (i % 3 == 0) {
+			results[ind] = "Fizz";
+		}
+		else {
+			results[ind] = String.valueOf(startInt);
+		}
+		ind++;
+		startInt++;
+	}
+	return results;
+}
