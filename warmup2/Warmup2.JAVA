@@ -2,7 +2,8 @@
 // www.codingbat.com JAVA Warmup 2 Problems and Solutions
 
 /*STRINGTIMES
-Given a string and a non-negative int n, return a larger string that is n copies of the original string. 
+Given a string and a non-negative int n, return a larger string that is n copies 
+of the original string. 
 
 stringTimes("Hi", 2) → "HiHi"
 stringTimes("Hi", 3) → "HiHiHi"
@@ -18,7 +19,9 @@ public String stringTimes(String str, int n) {
 }
 
 /*FRONTTIMES
-Given a string and a non-negative int n, we'll say that the front of the string is the first 3 chars, or whatever is there if the string is less than length 3. Return n copies of the front; 
+Given a string and a non-negative int n, we'll say that the front of the string is the 
+first 3 chars, or whatever is there if the string is less than length 3. 
+Return n copies of the front; 
 
 frontTimes("Chocolate", 2) → "ChoCho"
 frontTimes("Chocolate", 3) → "ChoChoCho"
@@ -42,7 +45,8 @@ public String frontTimes(String str, int n) {
 }
 
 /*COUNTXX
-Count the number of "xx" in the given string. We'll say that overlapping is allowed, so "xxx" contains 2 "xx". 
+Count the number of "xx" in the given string. We'll say that overlapping is allowed, 
+so "xxx" contains 2 "xx". 
 
 countXX("abcxx") → 1
 countXX("xxx") → 2
@@ -69,7 +73,8 @@ int countXX(String str) {
 	
 /*DOUBLEX
 
-Given a string, return true if the first instance of "x" in the string is immediately followed by another "x". 
+Given a string, return true if the first instance of "x" in the string is immediately 
+followed by another "x". 
 
 doubleX("axxbb") → true
 doubleX("axaxax") → false
@@ -92,7 +97,8 @@ boolean doubleX(String str) {
 
 /*STRINGBITS
 
-Given a string, return a new string made of every other char starting with the first, so "Hello" yields "Hlo". 
+Given a string, return a new string made of every other char starting with the 
+first, so "Hello" yields "Hlo". 
 
 stringBits("Hello") → "Hlo"
 stringBits("Hi") → "H"
@@ -127,7 +133,9 @@ public String stringSplosion(String str) {
 }
 
 /*LAST2
-Given a string, return the count of the number of times that a substring length 2 appears in the string and also as the last 2 chars of the string, so "hixxxhi" yields 1 (we won't count the end substring). 
+Given a string, return the count of the number of times that a substring length 
+2 appears in the string and also as the last 2 chars of the string, so "hixxxhi" 
+yields 1 (we won't count the end substring). 
 
 last2("hixxhi") → 1
 last2("xaxxaxaxx") → 1
@@ -171,7 +179,8 @@ public int arrayCount9 (int[] nums) {
 }
 
 /*ARRAYFRONT9
-Given an array of ints, return true if one of the first 4 elements in the array is a 9. The array length may be less than 4. 
+Given an array of ints, return true if one of the first 4 elements in the array 
+is a 9. The array length may be less than 4. 
 
 arrayFront9({1, 2, 9, 3, 4}) → true
 arrayFront9({1, 2, 3, 4, 9}) → false
@@ -213,7 +222,9 @@ public boolean array123(int[] nums) {
 }
 
 /*STRINGMATCH
-Given 2 strings, a and b, return the number of the positions where they contain the same length 2 substring. So "xxcaazz" and "xxbaaz" yields 3, since the "xx", "aa", and "az" substrings appear in the same place in both strings. 
+Given 2 strings, a and b, return the number of the positions where they contain 
+the same length 2 substring. So "xxcaazz" and "xxbaaz" yields 3, since the "xx", 
+"aa", and "az" substrings appear in the same place in both strings. 
 
 stringMatch("xxcaazz", "xxbaaz") → 3
 stringMatch("abc", "abc") → 2
@@ -244,7 +255,8 @@ public int stringMatch(String a, String b) {
 }
 
 /*STRINGX
-Given a string, return a version where all the "x" have been removed. Except an "x" at the very start or end should not be removed. 
+Given a string, return a version where all the "x" have been removed. Except 
+an "x" at the very start or end should not be removed. 
 
 stringX("xxHxix") → "xHix"
 stringX("abxxxcd") → "abcd"
@@ -267,7 +279,8 @@ public String stringX(String str) {
 }
 
 /*ALTPAIRS
-Given a string, return a string made of the chars at indexes 0,1, 4,5, 8,9 ... so "kittens" yields "kien". 
+Given a string, return a string made of the chars at indexes 0,1, 4,5, 8,9 ... 
+so "kittens" yields "kien". 
 
 altPairs("kitten") → "kien"
 altPairs("Chocolate") → "Chole"
@@ -288,7 +301,9 @@ public String altPairs(String str) {
 }
 
 /*STRINGYAK
-Suppose the string "yak" is unlucky. Given a string, return a version where all the "yak" are removed, but the "a" can be any char. The "yak" strings will not overlap. 
+Suppose the string "yak" is unlucky. Given a string, return a version where 
+all the "yak" are removed, but the "a" can be any char. The "yak" strings 
+will not overlap. 
 
 stringYak("yakpak") → "pak"
 stringYak("pakyak") → "pak"
@@ -313,7 +328,8 @@ public String stringYak(String str) {
 
 /*ARRAY667
 
-Given an array of ints, return the number of times that two 6's are next to each other in the array. Also count instances where the second "6" is actually a 7. 
+Given an array of ints, return the number of times that two 6's are next to 
+each other in the array. Also count instances where the second "6" is actually a 7. 
 
 array667({6, 6, 2}) → 1
 array667({6, 6, 2, 6}) → 1
@@ -332,7 +348,8 @@ public int array667(int[] nums) {
 }
 
 /*NOTRIPLES
-Given an array of ints, we'll say that a triple is a value appearing 3 times in a row in the array. Return true if the array does not contain any triples. 
+Given an array of ints, we'll say that a triple is a value appearing 3 times 
+in a row in the array. Return true if the array does not contain any triples. 
 
 noTriples({1, 1, 2, 2, 1}) → true
 noTriples({1, 1, 2, 2, 2, 1}) → false
@@ -349,7 +366,9 @@ public boolean noTriples(int[] nums) {
 }
 
 /*HAS271
-Given an array of ints, return true if it contains a 2, 7, 1 pattern -- a value, followed by the value plus 5, followed by the value minus 1. Additionally the 271 counts even if the "1" differs by 2 or less from the correct value. 
+Given an array of ints, return true if it contains a 2, 7, 1 pattern -- a value, 
+followed by the value plus 5, followed by the value minus 1. Additionally the 271 
+counts even if the "1" differs by 2 or less from the correct value. 
 
 has271({1, 2, 7, 1}) → true
 has271({1, 2, 8, 1}) → false
