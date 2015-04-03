@@ -20,7 +20,9 @@ public int factorial(int n) {
 }
 
 /*BUNNYEARS
-We have a number of bunnies and each bunny has two big floppy ears. We want to compute the total number of ears across all the bunnies recursively (without loops or multiplication). 
+We have a number of bunnies and each bunny has two big floppy 
+ears. We want to compute the total number of ears across all 
+the bunnies recursively (without loops or multiplication). 
 
 bunnyEars(0) → 0
 bunnyEars(1) → 2
@@ -141,7 +143,12 @@ public int count7(int n) {
 }
 
 /*COUNT8
-Given a non-negative int n, compute recursively (no loops) the count of the occurrences of 8 as a digit, except that an 8 with another 8 immediately to its left counts double, so 8818 yields 4. Note that mod (%) by 10 yields the rightmost digit (126 % 10 is 6), while divide (/) by 10 removes the rightmost digit (126 / 10 is 12). 
+Given a non-negative int n, compute recursively (no loops) the 
+count of the occurrences of 8 as a digit, except that an 8 with
+ another 8 immediately to its left counts double, so 8818 yields 
+ . Note that mod (%) by 10 yields the rightmost digit (126 % 10 
+ is 6), while divide (/) by 10 removes the rightmost digit 
+ (126 / 10 is 12). 
 
 count8(8) → 1
 count8(818) → 2
@@ -164,7 +171,9 @@ public int count8(int n) {
 }
 
 /*POWERN
-Given base and n that are both 1 or more, compute recursively (no loops) the value of base to the n power, so powerN(3, 2) is 9 (3 squared). 
+Given base and n that are both 1 or more, compute recursively 
+(no loops) the value of base to the n power, so powerN(3, 2) 
+is 9 (3 squared). 
 
 powerN(3, 1) → 3
 powerN(3, 2) → 9
@@ -179,7 +188,8 @@ public int powerN(int base, int n) {
 }
 
 /*COUNTX
-Given a string, compute recursively (no loops) the number of lowercase 'x' chars in the string. 
+Given a string, compute recursively (no loops) the number of 
+lowercase 'x' chars in the string. 
 
 countX("xxhixx") → 4
 countX("xhixhix") → 3
@@ -202,7 +212,8 @@ public int countX(String str) {
 }
 
 /*COUNTHI
-Given a string, compute recursively (no loops) the number of times lowercase "hi" appears in the string. 
+Given a string, compute recursively (no loops) the number of 
+times lowercase "hi" appears in the string. 
 
 countHi("xxhixx") → 1
 countHi("xhixhix") → 2
