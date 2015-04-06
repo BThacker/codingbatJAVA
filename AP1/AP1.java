@@ -1,5 +1,5 @@
 // @Brandon Thacker
-// www.codingbat.com JAVA Array2 Problems and Solutions 
+// www.codingbat.com JAVA AP-1 Problems and Solutions 
 
 /*
 AP CS medium problems. These problems are based on free 
@@ -482,5 +482,5 @@ userCompare("bb", 1, "bb", 1) → 0
 */
 
 public int userCompare(String aName, int aId, String bName, int bId) {
-	
+
 }
