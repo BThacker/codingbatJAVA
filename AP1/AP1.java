@@ -491,5 +491,94 @@ userCompare("bb", 1, "bb", 1) → 0
 */
 
 public int userCompare(String aName, int aId, String bName, int bId) {
-
+	if (aName.equals(bName)) {
+		if (aId < bId) {
+			return -1;
+		}
+		else if (aId > bId) {
+			return 1;
+		}
+		else {
+			return 0;
+		}
+	}
+	if (aName.compareTo(bName) < 0) {
+		return -1;
+	}
+	else {
+		return 1;
+	}
 }
+
+/*MERGETWO
+Start with two arrays of strings, A and B, each with its elements 
+in alphabetical order and without duplicates. Return a new array 
+containing the first N elements from the two arrays. The result 
+array should be in alphabetical order and without duplicates. A 
+and B will both have a length which is N or more. The best "linear" 
+solution makes a single pass over A and B, taking advantage of the 
+fact that they are in alphabetical order, copying elements 
+directly to the new array. 
+
+mergeTwo({"a", "c", "z"}, {"b", "f", "z"}, 3) → {"a", "b", "c"}
+mergeTwo({"a", "c", "z"}, {"c", "f", "z"}, 3) → {"a", "c", "f"}
+mergeTwo({"f", "g", "z"}, {"c", "f", "g"}, 3) → {"c", "f", "g"}
+*/
+
+public String[] mergeTwo(String[] a, String[] b, int n) {
+	String[] returnString = new String[n];
+	int retCounter = 0;
+	int aCounter = 0;
+	int bCounter = 0;
+	for (int i = 0; i < n; i++) {
+		if (a[aCounter].compareTo(b[bCounter]) < 0) {
+			returnString[i] = a[aCounter];
+			aCounter++;
+			continue;
+		}
+		if (b[bCounter].compareTo(a[aCounter]) < 0) {
+			returnString[i] = b[bCounter];
+			bCounter++;
+			continue;
+		}
+		if (a[aCounter].equals(b[bCounter])) {
+			returnString[i] = a[aCounter];
+			aCounter++;
+			bCounter++;
+			continue;
+		}
+	}
+	return returnString;
+}
+
+/*COMMONTWO
+Start with two arrays of strings, a and b, each in alphabetical 
+order, possibly with duplicates. Return the count of the number 
+of strings which appear in both arrays. The best "linear" 
+solution makes a single pass over both arrays, taking advantage 
+of the fact that they are in alphabetical order. 
+
+commonTwo({"a", "c", "x"}, {"b", "c", "d", "x"}) → 2
+commonTwo({"a", "c", "x"}, {"a", "b", "c", "x", "z"}) → 3
+commonTwo({"a", "b", "c"}, {"a", "b", "c"}) → 3
+*/
+
+public int commonTwo(String[] a, String[] b) {
+	int dupCounter = 0;
+	int jStart = 0;
+	for (int i = 0; i < a.length; i++) {
+		if (i > 0 && a[i].equals(a[i-1])) {
+			continue;
+		}
+		else {
+			for (int j = 0; j < b.length; j++) {
+				if (a[i].equals(b[j])) {
+					dupCounter++;
+					break;
+				}
+			}
+		}
+	}
+	return dupCounter;
+}
+
